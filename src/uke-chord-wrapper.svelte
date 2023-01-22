@@ -1,14 +1,18 @@
 <script>
-  export let name = "";
   import frets from "./uke-chords.json";
   import { onMount } from "svelte";
 
+  export let name = "";
+
   let classes = "";
   let numbers = [];
+  let showOrder = false;
 
   onMount(() => {
     let searchParams = new URLSearchParams(window.location.search);
     let highlightedChordsString = searchParams.getAll("chords")[0];
+    debugger;
+    showOrder = (searchParams.getAll("order")[0].toLowerCase() == "true");
 
     if (highlightedChordsString){ // if there are any chords in the url
       let highlightedChordsArray = highlightedChordsString.split(",");
@@ -33,8 +37,10 @@
 </script>
 
 <span class="{classes} m-2 p-4 text-center relative">
-  {#if numbers.length > 0}
-    <span class="absolute -right-3 -top-3 bg-red-200 p-2 rounded-full aspect-square">{numbers}</span>
+  {#if showOrder}
+    {#if numbers.length > 0}
+      <span class="absolute -right-3 -top-3 bg-red-200 p-2 rounded-full aspect-square">{numbers}</span>
+    {/if}
   {/if}
   <uke-chord img frets={frets[name]} name={name}></uke-chord>
 </span>
