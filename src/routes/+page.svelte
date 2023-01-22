@@ -2,7 +2,7 @@
 	import UkeChordWrapper from '../uke-chord-wrapper.svelte';
 </script>
 
-<h1>Uke Chords</h1>
+<h1 class="text-center text-2xl p-3">Uke Chords (Accordion Layout) <span class="pl-4 text-lg">by <a class="text-blue-500 underline" href="https://social.coop/@heycaseywattsup">@heycaseywattsup</a></span></h1>
 <div class="grid grid-cols-7 text-center justify-items-center">
   <UkeChordWrapper name="F"/>
   <UkeChordWrapper name="C"/>
