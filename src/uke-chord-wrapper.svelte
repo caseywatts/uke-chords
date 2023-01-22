@@ -15,7 +15,8 @@
     showOrder = (searchParams.getAll("order")[0].toLowerCase() == "true");
 
     if (highlightedChordsString){ // if there are any chords in the url
-      let highlightedChordsArray = highlightedChordsString.split(",");
+      let highlightedChordsArray = highlightedChordsString.split(",").map(v => v.trim());
+      debugger;
       if (highlightedChordsArray.includes(name)) {
         classes = "bg-blue-100";
       } else {
