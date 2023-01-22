@@ -5,7 +5,9 @@
 
 
 <h1 class="text-center text-2xl p-3">Uke Chords (Accordion Layout) <span class="pl-4 text-lg">by <a class="text-blue-500 underline" href="https://social.coop/@heycaseywattsup">@heycaseywattsup</a></span></h1>
-<div class="grid grid-cols-7 text-center justify-items-center">
+<div class="grid grid-cols-9 text-center justify-items-center">
+  <UkeChordWrapper name="Eb"/>
+  <UkeChordWrapper name="Bb"/>
   <UkeChordWrapper name="F"/>
   <UkeChordWrapper name="C"/>
   <UkeChordWrapper name="G"/>
@@ -14,6 +16,8 @@
   <UkeChordWrapper name="E"/>
   <UkeChordWrapper name="B"/>
 
+  <UkeChordWrapper name="Ebm"/>
+  <UkeChordWrapper name="Bbm"/>
   <UkeChordWrapper name="Fm"/>
   <UkeChordWrapper name="Cm"/>
   <UkeChordWrapper name="Gm"/>
@@ -22,6 +26,8 @@
   <UkeChordWrapper name="Em"/>
   <UkeChordWrapper name="Bm"/>
 
+  <UkeChordWrapper name="Eb7"/>
+  <UkeChordWrapper name="Bb7"/>
   <UkeChordWrapper name="F7"/>
   <UkeChordWrapper name="C7"/>
   <UkeChordWrapper name="G7"/>
