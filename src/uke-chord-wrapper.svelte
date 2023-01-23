@@ -12,7 +12,7 @@
     let searchParams = new URLSearchParams(window.location.search);
     let highlightedChordsString = searchParams.getAll("chords")[0];
     debugger;
-    showOrder = (searchParams.getAll("order")[0].toLowerCase() == "true");
+    showOrder = (searchParams.getAll("order")[0]?.toLowerCase() == "true");
 
     if (highlightedChordsString){ // if there are any chords in the url
       let highlightedChordsArray = highlightedChordsString.split(",").map(v => v.trim());
