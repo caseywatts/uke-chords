@@ -35,12 +35,35 @@
     }
 });
 
+function colorForNumber(number) {
+  // colors from https://iamkate.com/data/12-bit-rainbow/
+  let colors = [
+    // "#817",
+    "#a35",
+    "#c66",
+    "#e94",
+    "#ed0",
+    "#9d5",
+    "#4d8",
+    "#2cb",
+    "#0bc",
+    "#09c",
+    "#36b",
+    "#639"
+  ]
+  return colors[number];
+}
+
 </script>
 
 <span class="{classes} m-2 p-4 text-center relative">
   {#if showOrder}
     {#if numbers.length > 0}
-      <span class="absolute -right-3 -top-3 bg-red-200 p-2 rounded-full aspect-square">{numbers}</span>
+      <span class="absolute -right-3 -top-3">
+        {#each numbers as number}
+          <span class="bg-red-200 p-2 m-1 rounded-full aspect-square font-semibold" style="background-color: {colorForNumber(number)}">{number}</span>
+        {/each}
+      </span>
     {/if}
   {/if}
   <uke-chord img frets={frets[name]} name={name}></uke-chord>
