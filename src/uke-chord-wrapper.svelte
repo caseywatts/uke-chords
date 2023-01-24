@@ -73,9 +73,9 @@ function colorForNumber(number) {
 <span class="{classes} m-2 p-4 text-center relative">
   {#if showOrder}
     {#if numbers.length > 0}
-      <span class="absolute -left-4 -top-1">
+      <span class="absolute -left-4 -top-3">
         {#each numbers as number}
-          <span class="bg-red-200 p-2 m-1 rounded-full outline outline-5 outline-white" style="background-color: {colorForNumber(number)}; text-shadow: 0px 0px 2px white;">{number}</span>
+          <span class="bg-red-200 px-2 py-1 m-1 rounded-full outline outline-6 outline-white font-bold" style="background-color: {colorForNumber(number)}; text-shadow: 0px 0px 3px white, 0px 0px 2px white, 0px 0px 1px white;">{number}</span>
         {/each}
       </span>
     {/if}
