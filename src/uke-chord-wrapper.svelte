@@ -51,6 +51,20 @@ function colorForNumber(number) {
     "#36b",
     "#639"
   ]
+  colors = [
+    "#FFF",
+    "#EEE",
+    "#DDD",
+    "#CCC",
+    "#BBB",
+    "#AAA",
+    "#999",
+    "#888",
+    "#777",
+    "#666",
+    "#555",
+    "#444",
+  ]
   return colors[number];
 }
 
@@ -59,9 +73,9 @@ function colorForNumber(number) {
 <span class="{classes} m-2 p-4 text-center relative">
   {#if showOrder}
     {#if numbers.length > 0}
-      <span class="absolute -right-3 -top-3">
+      <span class="absolute -left-4 -top-1">
         {#each numbers as number}
-          <span class="bg-red-200 p-2 m-1 rounded-full aspect-square font-semibold" style="background-color: {colorForNumber(number)}">{number}</span>
+          <span class="bg-red-200 p-2 m-1 rounded-full outline outline-5 outline-white" style="background-color: {colorForNumber(number)}; text-shadow: 0px 0px 2px white;">{number}</span>
         {/each}
       </span>
     {/if}
