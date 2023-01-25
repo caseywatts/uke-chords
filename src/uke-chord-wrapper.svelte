@@ -1,20 +1,22 @@
 <script>
   import frets from "./uke-chords.json";
   import { onMount } from "svelte";
+  import {createQueryStore} from "./lib/URLSearchParamsStore"
+
+  const highlightedChordsString = createQueryStore("chords");
+  const showOrder = createQueryStore("order");
 
   export let name = "";
 
   let classes = "";
   let numbers = [];
-  let showOrder = false;
 
   onMount(() => {
     let searchParams = new URLSearchParams(window.location.search);
-    let highlightedChordsString = searchParams.getAll("chords")[0];
-    showOrder = (searchParams.getAll("order")[0]?.toLowerCase() == "true");
+    // showOrder = (searchParams.getAll("order")[0]?.toLowerCase() == "true");
 
     if (highlightedChordsString){ // if there are any chords in the url
-      let highlightedChordsArray = highlightedChordsString.split(",").map(v => v.trim());
+      let highlightedChordsArray = $highlightedChordsString.split(",").map(v => v.trim());
       if (highlightedChordsArray.includes(name)) {
         classes = "bg-blue-100";
       } else {
@@ -69,7 +71,7 @@ function colorForNumber(number) {
 </script>
 
 <span class="{classes} m-2 p-4 text-center relative">
-  {#if showOrder}
+  {#if $showOrder}
     {#if numbers.length > 0}
       <span class="absolute -left-4 -top-3">
         {#each numbers as number}
