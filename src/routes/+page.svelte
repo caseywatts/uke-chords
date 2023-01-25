@@ -1,5 +1,6 @@
 <script>
   import CircleOfFifths from "../components/+circle-of-fifths.svelte";
+  import JustTheHighlights from "../components/+just-the-highlights.svelte"
   import { onMount } from "svelte";
 
   let title = "";
@@ -16,4 +17,5 @@
 {#if title}
   <h2 class="text-center text-4xl p-3">{title}</h2>
 {/if}
-<CircleOfFifths />
+<JustTheHighlights />
+<!-- <CircleOfFifths /> -->
