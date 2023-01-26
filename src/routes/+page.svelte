@@ -1,7 +1,7 @@
 <script>
   import CircleOfFifths from "../components/+circle-of-fifths.svelte";
   import JustTheHighlights from "../components/+just-the-highlights.svelte"
-  import { createParamsStringStore } from "../lib/URLSearchParamsStringStore"
+  import createParamsStringStore from "../lib/URLSearchParamsStringStore"
 
   const title = createParamsStringStore("title");
 </script>

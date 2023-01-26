@@ -1,18 +1,30 @@
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 
-export function createParamsBooleanStore(prop) {
+function serialize(bool) {
+	if (bool == true) {
+		return 'true';
+	} else {
+		return 'false';
+	}
+}
+
+function deserialize(string) {
+	return string == 'true';
+}
+
+export default function (prop) {
 	return {
 		subscribe: (h) => {
 			// any time $page gets updated, we'll update the queryStore
 			return page.subscribe((p) => {
-				h(p.url.searchParams.get(prop) == 'true');
+				h(deserialize(p.url.searchParams.get(prop)));
 			});
 		},
 		set: (value) => {
 			// any time the queryStore gets updated, we'll also update the url using goto()
 			page.subscribe((p) => {
-				p.url.searchParams.set(prop, value);
+				p.url.searchParams.set(prop, serialize(value));
 				goto(`?${p.url.searchParams.toString()}`, {
 					keepFocus: true,
 					replaceState: true,

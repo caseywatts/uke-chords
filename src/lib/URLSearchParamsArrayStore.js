@@ -1,26 +1,26 @@
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 
-function stringifyArray(array) {
+function serialize(array) {
 	return array.toString();
 }
 
-function arrayifyString(string) {
+function deserialize(string) {
 	return string.split(',').map((v) => v.trim());
 }
 
-export function createParamsArrayStore(prop) {
+export default function (prop) {
 	return {
 		subscribe: (h) => {
 			// any time $page gets updated, we'll update the queryStore
 			return page.subscribe((p) => {
-				h(arrayifyString(p.url.searchParams.get(prop)));
+				h(deserialize(p.url.searchParams.get(prop)));
 			});
 		},
 		set: (value) => {
 			// any time the queryStore gets updated, we'll also update the url using goto()
 			page.subscribe((p) => {
-				p.url.searchParams.set(prop, stringifyArray(value));
+				p.url.searchParams.set(prop, serialize(value));
 				goto(`?${p.url.searchParams.toString()}`, {
 					keepFocus: true,
 					replaceState: true,
