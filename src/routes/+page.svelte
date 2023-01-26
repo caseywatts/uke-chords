@@ -2,8 +2,10 @@
   import CircleOfFifths from "../components/+circle-of-fifths.svelte";
   import JustTheHighlights from "../components/+just-the-highlights.svelte"
   import createParamsStringStore from "../lib/URLSearchParamsStringStore"
+  import createParamsBooleanStore from "../lib/URLSearchParamsBooleanStore"
 
   const title = createParamsStringStore("title");
+  const order = createParamsBooleanStore("order");
 </script>
 
 
@@ -12,6 +14,7 @@
 {#if title}
   <h2 class="text-center text-4xl p-3">{$title}</h2>
   <input bind:value={$title}>
+  <input type=checkbox bind:checked={$order}>
 {/if}
 <!-- <JustTheHighlights /> -->
 <CircleOfFifths />
