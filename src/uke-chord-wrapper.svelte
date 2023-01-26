@@ -1,39 +1,34 @@
 <script>
   import frets from "./uke-chords.json";
-  import { onMount } from "svelte";
-  import {createQueryStore} from "./lib/URLSearchParamsStore"
+  import { createParamsBooleanStore } from "./lib/URLSearchParamsBooleanStore.js"
+  import { createParamsArrayStore } from "./lib/URLSearchParamsArrayStore.js";
 
-  const highlightedChordsString = createQueryStore("chords");
-  const showOrder = createQueryStore("order");
+  const highlightedChordsArray = createParamsArrayStore("chords");
+  const showOrder = createParamsBooleanStore("order");
 
   export let name = "";
 
   let classes = "";
   let numbers = [];
 
-  onMount(() => {
-    let searchParams = new URLSearchParams(window.location.search);
-    // showOrder = (searchParams.getAll("order")[0]?.toLowerCase() == "true");
+  let noChordsInURL = ($highlightedChordsArray.length == 0);
 
-    if (highlightedChordsString){ // if there are any chords in the url
-      let highlightedChordsArray = $highlightedChordsString.split(",").map(v => v.trim());
-      if (highlightedChordsArray.includes(name)) {
-        classes = "bg-blue-100";
-      } else {
-        classes = "bg-slate-400 opacity-80"
-      }
-
-      numbers = highlightedChordsArray.reduce(function(a, e, i) {
-        if (e === name)
-          a.push(i);
-        return a;
-      }, []);   // [0, 3, 5]
-      numbers = numbers.map((n) => n + 1) // start counting from 1
-
-    } else { // no chords in the url; default
+  if (noChordsInURL){
+    classes = "bg-blue-100";
+  } else {
+    if ($highlightedChordsArray.includes(name)) {
       classes = "bg-blue-100";
+    } else {
+      classes = "bg-slate-400 opacity-80"
     }
-});
+
+    numbers = $highlightedChordsArray.reduce(function(a, e, i) {
+      if (e === name)
+        a.push(i);
+      return a;
+    }, []);   // [0, 3, 5]
+    numbers = numbers.map((n) => n + 1) // start counting from 1
+  }
 
 function colorForNumber(number) {
   // colors from https://iamkate.com/data/12-bit-rainbow/
