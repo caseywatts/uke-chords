@@ -7,13 +7,17 @@
   const title = createParamsStringStore("title");
   const order = createParamsBooleanStore("order");
   const chords = createParamsStringStore("chords");
+
+  let editing = false;
 </script>
 
 
 
 <h1 class="text-center text-2xl p-3">Uke Chords (Accordion Layout) <span class="pl-4 text-lg">by <a class="text-blue-500 underline" href="https://social.coop/@heycaseywattsup">@heycaseywattsup</a></span></h1>
-{#if title}
+{#if $title}
   <h2 class="text-center text-4xl p-3">{$title}</h2>
+{/if}
+{#if editing}
   <label>
     Title
     <input bind:value={$title}>

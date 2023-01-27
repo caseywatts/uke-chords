@@ -6,7 +6,7 @@ function serialize(array) {
 }
 
 function deserialize(string) {
-	return string.split(',').map((v) => v.trim());
+	if (string) return string.split(',').map((v) => v.trim());
 }
 
 export default function (prop) {

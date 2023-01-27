@@ -11,23 +11,25 @@
   let classes = "";
   let numbers = [];
 
-  let noChordsInURL = ($highlightedChordsArray.length == 0);
+  if ($highlightedChordsArray) {
+    let noChordsInURL = ($highlightedChordsArray.length == 0);
 
-  if (noChordsInURL){
-    classes = "bg-blue-100";
-  } else {
-    if ($highlightedChordsArray.includes(name)) {
+    if (noChordsInURL){
       classes = "bg-blue-100";
     } else {
-      classes = "bg-slate-400 opacity-80"
-    }
+      if ($highlightedChordsArray.includes(name)) {
+        classes = "bg-blue-100";
+      } else {
+        classes = "bg-slate-400 opacity-80"
+      }
 
-    numbers = $highlightedChordsArray.reduce(function(a, e, i) {
-      if (e === name)
-        a.push(i);
-      return a;
-    }, []);   // [0, 3, 5]
-    numbers = numbers.map((n) => n + 1) // start counting from 1
+      numbers = $highlightedChordsArray.reduce(function(a, e, i) {
+        if (e === name)
+          a.push(i);
+        return a;
+      }, []);   // [0, 3, 5]
+      numbers = numbers.map((n) => n + 1) // start counting from 1
+    }
   }
 
 function colorForNumber(number) {
