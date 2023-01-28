@@ -1,13 +1,13 @@
 <script>
   import CircleOfFifths from "../components/+circle-of-fifths.svelte";
   import JustTheHighlights from "../components/+just-the-highlights.svelte"
-  import { createParamsStringStore, createParamsBooleanStore } from "../lib/URLSearchParamsStore"
+  import { createParamsStringStore, createParamsBooleanStore, createParamsArrayStore } from "../lib/URLSearchParamsStore"
 
   const title = createParamsStringStore("title");
   const order = createParamsBooleanStore("order");
-  const chords = createParamsStringStore("chords");
+  const chords = createParamsArrayStore("chords");
 
-  let editing = false;
+  let editing = true;
 </script>
 
 
@@ -27,7 +27,13 @@
   </label>
   <label>
     Chords
-    <input bind:value={$chords}>
+    <select multiple bind:value={$chords} style="width: 100px;">
+      <option value="F">F</option>
+      <option value="C">C</option>
+      <option value="G">G</option>
+      <option value="D">D</option>
+      <option value="A">A</option>
+    </select>
   </label>
 {/if}
 <!-- <JustTheHighlights /> -->
