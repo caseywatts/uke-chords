@@ -4,8 +4,12 @@
 
   const highlightedChordsArray = createParamsArrayStore("chords");
   const showOrder = createParamsBooleanStore("order");
+  const grayscale = true;
+
+  let style = "";
 
   export let name = "";
+  export let highlight = "panel";
 
   let classes = "";
   let numbers = [];
@@ -31,42 +35,62 @@
     }
   }
 
+  if (highlight == "panel") {
+    style = `background-color: ${colorForNumber(numbers[0])};`;
+  }
+
 function colorForNumber(number) {
   // colors from https://iamkate.com/data/12-bit-rainbow/
-  let colors = [
-    // "#817",
-    "#a35",
-    "#c66",
-    "#e94",
-    "#ed0",
-    "#9d5",
-    "#4d8",
-    "#2cb",
-    "#0bc",
-    "#09c",
-    "#36b",
-    "#639"
-  ]
-  colors = [
-    "#FFF",
-    "#EEE",
-    "#DDD",
-    "#CCC",
-    "#BBB",
-    "#AAA",
-    "#999",
-    "#888",
-    "#777",
-    "#666",
-    "#555",
-    "#444",
-  ]
+  let colors
+  if (grayscale) {
+    colors = [
+      "#FFF",
+      "#EEE",
+      "#DDD",
+      "#CCC",
+      "#BBB",
+      "#AAA",
+      "#999",
+      "#888",
+      "#777",
+      "#666",
+      "#555",
+      "#444",
+    ]
+  } else {
+    colors = [
+      // "#817",
+      "#a35",
+      "#c66",
+      "#e94",
+      "#ed0",
+      "#9d5",
+      "#4d8",
+      "#2cb",
+      "#0bc",
+      "#09c",
+      "#36b",
+      "#639"
+    ]
+    colors = [
+      "#FECACA",
+      "#FED7AA",
+      "#FEF08A",
+      "#D9F99D",
+      "#99F6E4",
+      "#A5F3FC",
+      "#BFDBFE",
+      "#C7D2FE",
+      "#E9D5FF",
+      "#FBCFE8"
+    ]
+  }
   return colors[number];
 }
 
 </script>
 
-<span class="{classes} m-2 p-4 text-center relative">
+<span class="{classes} inline-block m-2 p-4 h-40 text-center relative" {style}>
   {#if $showOrder}
     {#if numbers.length > 0}
       <span class="absolute -left-4 -top-3">

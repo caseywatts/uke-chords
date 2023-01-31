@@ -5,8 +5,8 @@
   const chords = createParamsArrayStore("chords");
 </script>
 
-<div class="grid grid-cols-9 text-center justify-items-center">
+<div class="text-left justify-items-center p-4">
   {#each $chords as chord}
-    <UkeChordWrapper name={chord} />
+    <UkeChordWrapper name={chord} highlight="panel" />
   {/each}
 </div>
