@@ -6,8 +6,9 @@
   const title = createParamsStringStore("title");
   const order = createParamsBooleanStore("order");
   const chords = createParamsArrayStore("chords");
+  const layout = createParamsStringStore("layout");
 
-  let editing = true;
+  let editing = false;
 </script>
 
 
@@ -36,5 +37,10 @@
     </select>
   </label>
 {/if}
-<!-- <JustTheHighlights /> -->
-<CircleOfFifths />
+
+{#if $layout == "chords-used"}
+  <JustTheHighlights />
+{/if}
+{#if $layout == "circle-of-fifths" }
+  <CircleOfFifths />
+{/if }
