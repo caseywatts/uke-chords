@@ -1,6 +1,7 @@
 <script>
   import CircleOfFifths from "../components/+circle-of-fifths.svelte";
   import JustTheHighlights from "../components/+just-the-highlights.svelte"
+  import Accordion from "../components/+accordion.svelte"
   import { createParamsStringStore, createParamsBooleanStore, createParamsArrayStore } from "../lib/URLSearchParamsStore"
 
   const title = createParamsStringStore("title");
@@ -41,6 +42,8 @@
 
   {#if $layout == "chords-used"}
     <JustTheHighlights />
+  {:else if $layout == "accordion"}
+    <Accordion />
   {:else}
     <CircleOfFifths />
   {/if}

@@ -6,12 +6,11 @@
   const showOrder = createParamsBooleanStore("order");
   const grayscale = true;
 
-  let style = "";
-
   export let name = "";
   export let highlight = "panel";
 
   let classes = "";
+  let style = "";
   let numbers = [];
 
   if ($highlightedChordsArray) {
