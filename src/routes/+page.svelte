@@ -5,6 +5,7 @@
   import { createParamsStringStore, createParamsBooleanStore, createParamsArrayStore } from "../lib/URLSearchParamsStore"
 
   const title = createParamsStringStore("title");
+  const artist = createParamsStringStore("artist");
   const order = createParamsBooleanStore("order");
   const chords = createParamsArrayStore("chords");
   const layout = createParamsStringStore("layout");
@@ -12,13 +13,14 @@
   let editing = false;
 </script>
 
-
-
-<h1 class="text-center text-2xl p-3">Uke Chords
+<h1 class="text-center text-2xl p-2 bg-slate-100">UkeChords.xyz
   {#if ["accordion", "fifths"].includes($layout)}(Accordion Layout){/if}
   <span class="pl-4 text-lg">by <a class="text-blue-500 underline" href="https://social.coop/@heycaseywattsup">@heycaseywattsup</a></span></h1>
 {#if $title}
-  <h2 class="text-center text-4xl p-3">{$title}</h2>
+  <h2 class="text-center text-4xl p-3 mt-2">
+    {$title}
+    <div class="text-2xl">{$artist}</div>
+  </h2>
 {/if}
 <div class="text-center">
   {#if editing}
