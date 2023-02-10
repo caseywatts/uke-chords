@@ -40,11 +40,9 @@
     </label>
   {/if}
 
-  {#if $layout == "chords-used"}
-    <JustTheHighlights />
-  {:else if $layout == "accordion"}
+  {#if $layout == "accordion"}
     <Accordion />
   {:else}
-    <CircleOfFifths />
+    <JustTheHighlights />  
   {/if}
 </div>
