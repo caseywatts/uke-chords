@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@vercel/analytics": "^0.1.8",
 		"mdsvex": "^0.10.6"
 	}
 }

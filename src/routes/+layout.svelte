@@ -2,6 +2,11 @@
   import "../app.css";
   import { createParamsStringStore } from "../lib/URLSearchParamsStore"
   const layout = createParamsStringStore("layout");
+
+  import { dev } from '$app/environment';
+  import { inject } from '@vercel/analytics';
+
+  inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <div class="p-2 bg-slate-100 flex flex-grow justify-between">
