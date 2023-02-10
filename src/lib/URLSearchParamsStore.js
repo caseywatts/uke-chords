@@ -44,11 +44,11 @@ function serialize(paramType, data) {
 
 function deserialize(paramType, data) {
 	if (paramType == 'array') {
-		return arrayParam.deserialize(data);
+		return arrayParam.deserialize(data) || [];
 	} else if (paramType == 'boolean') {
-		return booleanParam.deserialize(data);
+		return booleanParam.deserialize(data) || false;
 	} else {
-		return stringParam.deserialize(data);
+		return stringParam.deserialize(data) || '';
 	}
 }
 
