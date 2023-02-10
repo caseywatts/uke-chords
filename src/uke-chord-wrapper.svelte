@@ -2,7 +2,7 @@
   import frets from "./uke-chords.json";
   import { createParamsArrayStore, createParamsBooleanStore } from "./lib/URLSearchParamsStore"
 
-  const highlightedChordsArray = createParamsArrayStore("chords");
+  const highlightedChordsArray = createParamsArrayStore("chorus");
   const showOrder = createParamsBooleanStore("order");
   const grayscale = true;
 
