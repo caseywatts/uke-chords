@@ -48,3 +48,14 @@ This app defines the structure using single characters:
 For example:
 
 - `structure=v,v,b,c,v,v,b,c,b,c` or `structure=`v,c`
+
+### URL Parameter Gotchas
+
+* The hardest thing about URL parameters like these is remembering `?` vs `&`:
+  * there has to be a `?` to start (no `&` there)
+  * any parameters beyond the first one starts with `&` (not a `?`)
+* Example full URL:
+
+```
+https://www.ukechords.xyz/?title=Bills,%20Bills,%20Bills&artist=Destiny%27s%20Child&chorus=Am,E,G,D,F,E&verse=Am,E,Am,E,F,E,Dm,E&bridge=&structure=v,v,b,c,v,v,b,c,b,c
+```
